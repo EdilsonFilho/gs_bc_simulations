@@ -73,6 +73,14 @@ Some of the simulation results are:
   <img src="/images/simulation-matlab-2gs.png" width="700">
 </p>
 
+
+### Overpass or Interations
+Each communication window between the satellite and the ground station, in the code and in the graph were called interactions. 
+
+<p align="center">
+  <img src="/images/interations.png" width="700">
+</p>
+
 ### BER - Bit Error Rate
 The Y-axis of the graph represents the bit error rate (BER) on a linear scale. In other words, it represents the percentage of bits received incorrectly in relation to the total number of bits transmitted. For example, if the bit error rate is 0.01, this means that 1% of the transmitted bits were received incorrectly. The scale is linear because it is a direct representation of the bit error rate.
 If the value on the y-axis is 0.5, this means that half of the transmitted bits were received correctly and the other half were received incorrectly. In other words, the bit error rate (BER) is 0.5, which means that there are too many errors in the transmission and the quality of the channel is very poor. The scale used on the y-axis is from 0 to 1, representing the percentage of bits received correctly, i.e., a scale from 0 to 100%.
