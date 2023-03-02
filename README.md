@@ -1,5 +1,7 @@
 
 # Simulations do  Decentralized Ground Stations with Blockchain
+Author: MS.c Jose Edilson Silva Filho
+Email: edilsonfilho@lesc.ufc.br
 
 ### GS-BC
 Our proposal with this project is to provide mission control with greater communication capacity with its satellites through a decentralized infrastructure
@@ -83,15 +85,22 @@ Each communication window between the satellite and the ground station, in the c
 
 ### BER - Bit Error Rate
 The Y-axis of the graph represents the bit error rate (BER) on a linear scale. In other words, it represents the percentage of bits received incorrectly in relation to the total number of bits transmitted. For example, if the bit error rate is 0.01, this means that 1% of the transmitted bits were received incorrectly. The scale is linear because it is a direct representation of the bit error rate.
-If the value on the y-axis is 0.5, this means that half of the transmitted bits were received correctly and the other half were received incorrectly. In other words, the bit error rate (BER) is 0.5, which means that there are too many errors in the transmission and the quality of the channel is very poor. The scale used on the y-axis is from 0 to 1, representing the percentage of bits received correctly, i.e., a scale from 0 to 100%.
+If the value on the y-axis is 0.5, this means that half of the transmitted bits were received correctly and the other half were received incorrectly. In other words, the bit error rate (BER) is 0.5, which means that there are too many errors in the transmission and the quality of the channel is very poor. The scale used on the y-axis is from 0 to 1, representing the percentage of bits received correctly, i.e., a scale from 0 to 100%. What does this graph mean? It simply shows us in which iterations, or in which overpass, the errors were greater. Investigating why this happened is another step. 
 
 <p align="center">
   <img src="/images/BERxOverpass.png" width="700">
 </p>
 
 
-Author: MS.c Jose Edilson Silva Filho
-Email: edilsonfilho@lesc.ufc.br
 
+
+References for the codes:
+```
+[1] https://www.mathworks.com/help/comm/ref/rfprop.rain.html
+[2] https://www.mathworks.com/help/aerotbx/ug/matlabshared.satellitescenario.satellite.html
+[3] https://www.mathworks.com/help/aerotbx/ug/model-visualize-and-analyze-satellite-scenario.html
+[4] https://www.mathworks.com/help/aerotbx/ug/satellite-constellation-access-to-a-ground-station.html
+[5] https://www.mathworks.com/help/aerotbx/satellite-scenario.html?s_tid=CRUX_lftnav
+```
 
 
