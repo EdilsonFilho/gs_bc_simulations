@@ -3,6 +3,8 @@
 Author: MS.c Jose Edilson Silva Filho
 Email: edilsonfilho@lesc.ufc.br
 
+Note: This repository collects some code that I created. It does not have details of the blockchain usage nor the simulation with all the subsystems, because this code is restricted. The intent of the current repository is to show academically some simulations to colleagues. 
+
 ### GS-BC
 Our proposal with this project is to provide mission control with greater communication capacity with its satellites through a decentralized infrastructure
 of ground stations. We thus provide an environment in which each ground station participating in the consortium communicates with the satellites in the 
