@@ -40,17 +40,45 @@ trueAnomaly = 263.19;
 lat = -3.7484767;
 lon = -38.5788343;
 ```
+
+ ```
+ rainChannel = comm.RicianChannel(...
+        'SampleRate', fs, ...
+        'KFactor', 50, ...
+        'DirectPathDopplerShift', 0, ...
+        'MaximumDopplerShift', 5, ...
+        'PathDelays', [0 1.5e-5 3.5e-5], ...
+        'AveragePathGains', [0 -2 -10], ...
+        'NormalizePathGains', true, ...
+        'DopplerSpectrum', doppler('Gaussian', 0.1));
+ ```
+ 
+ This code snippet creates a rainChannel object of the comm.RicianChannel class to model the communication channel that the signal of interest passes through. The comm.RicianChannel function is used to create a communication channel that simulates the conditions of propagation of the signal of interest over a wireless medium.
+
+The input parameters specified for creating the rainChannel object are:
+
+- SampleRate: specifies the sampling rate in Hz;
+- KFactor: specifies the ratio between the direct signal energy and the scattered signal energy. This parameter is used to model the relationship between the direct signal and the reflected or scattered signals in the propagation environment;
+DirectPathDopplerShift: specifies the Doppler frequency shift in the direct signal. This is used to model the Doppler effect caused by motion of the transmitter, receiver, or both;
+- MaximumDopplerShift: specifies the maximum Doppler frequency shift in the scattered signal. This is used to model the Doppler effect caused by relative motion between the transmitter, receiver, or both;
+- PathDelays: specifies a vector of propagation delays in seconds for the different propagation paths of the signal. Each value in the vector corresponds to a different path;
+- AveragePathGains: specifies a vector of average path gains (in dB) for the different signal propagation paths. Each value in the vector corresponds to a different path;
+- NormalizePathGains: specifies whether the average path gains should be normalized so that the direct path has an average path gain of 0 dB;
+- DopplerSpectrum: specifies the Doppler spectrum model used to model the frequency fluctuations caused by signal propagation through the communication channel. In this case the model is "Gaussian" with a bandwidth of 0.1 Hz.
 Some of the simulation results are:
 
+### Image Simulation
+
 <p align="center">
-  <img src="/images/simulation-matlab-2gs.png" width="500">
+  <img src="/images/simulation-matlab-2gs.png" width="700">
 </p>
 
 ### BER - Bit Error Rate
-
+The Y-axis of the graph represents the bit error rate (BER) on a linear scale. In other words, it represents the percentage of bits received incorrectly in relation to the total number of bits transmitted. For example, if the bit error rate is 0.01, this means that 1% of the transmitted bits were received incorrectly. The scale is linear because it is a direct representation of the bit error rate.
+If the value on the y-axis is 0.5, this means that half of the transmitted bits were received correctly and the other half were received incorrectly. In other words, the bit error rate (BER) is 0.5, which means that there are too many errors in the transmission and the quality of the channel is very poor. The scale used on the y-axis is from 0 to 1, representing the percentage of bits received correctly, i.e., a scale from 0 to 100%.
 
 <p align="center">
-  <img src="/images/BERxOverpass.png" width="500">
+  <img src="/images/BERxOverpass.png" width="700">
 </p>
 
 
