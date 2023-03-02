@@ -92,6 +92,13 @@ plot(1:num, berVec);
 xlabel('Iteração');
 ylabel('Taxa de BER');
 title('Taxa de BER x Iteração');
+
+% Plot KDE dos dados
+figure
+ksdensity(berVec)
+xlabel('BER')
+ylabel('Densidade')
+title('Distribuição do BER')
 % resuls
 
 
