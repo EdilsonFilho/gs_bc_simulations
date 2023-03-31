@@ -33,23 +33,67 @@ stopTime = startTime + days(90);
 sampleTime = 60;
 
 % configuration orbit
+%% configuration orbit
+%semiMajorAxis (semi-major axis) is half the maximum axis length of an ellipse
+%describing the satellites orbit around the Earth, measured in meters
 semiMajorAxis = 7155000;
+
+%eccentricity is a measure of how the satellites orbit deviates
+% of a perfect circular orbit. It is a number between 0 and 1. The closer to zero,
+% more circular is the orbit; the closer to 1, the more elliptical the orbit.
 eccentricity = 0.0001030;
+
+%inclination is the angle between the satellites orbital plane and the Earths equator,
+% measured in degrees. It is the inclination of the orbit relative to the Earths equator.
 inclination = 98.5; 
+
+%rightAscensionOfAscendingNode (right ascension of ascending node) is the angle measured from the
+% Earths equator to the point where the satellites orbit crosses the equator going north, measured in degrees.
+% Is the longitude of the point where the satellites orbit crosses the equator going north.
 rightAscensionOfAscendingNode = 161.5; 
+
+%argumentOfPeriapsis (perihelion argument) is the angle measured from the ascending node to the point where the satellite
+% is closest to Earth, measured in degrees. It is the measure of the axis orientation of the ellipse of the orbit.
 argumentOfPeriapsis = 0; 
-trueAnomaly = 263.19; 
+
+%trueAnomaly is the angle measured from perihelion to the satellites current position along
+% its orbit, measured in degrees. It is the position of the satellite along the ellipse of its orbit at the time it is observed.
+trueAnomaly = 263.19;  
 
 %configuration GS
 lat = -3.7484767;
 lon = -38.5788343;
 ```
+```
+%% Calculating DirectPatchDooplerShift
+%To calculate the v_sat_cubesat/c ratio for a satellite in LEO orbit and a ground station, it is necessary to know the altitude of the satellite and the distance between the satellite and the ground station.
+%Using the equation shown earlier, we can calculate v_sat_cubesat/c as follows:
+
+%First, we need to calculate the orbital speed of the satellite using the following formula:
+
+%V = sqrt(mu / r)
+
+%onde:
+
+%mu is the Earths gravitational constant (398600.4418 km^3/s^2)
+%r is the distance between the center of the Earth and the satellite (Earth radius + satellite altitude)
+%Substituting the values, we have:
+
+V = sqrt(398600.4418 / (6378.137 + (semiMajorAxis))); %Km/s
+
+%Speed ​​of light is approximately 299792.458 km/s.
+c = 299792.458;
+%Finally, we can calculate the v_sat_cubesat/c ratio:
+
+rate_v_sat = V/c;
+DirectPathDopplerShift = -2*rate_v_sat * fc;
+```
 
  ```
  rainChannel = comm.RicianChannel(...
-        'SampleRate', fs, ...
-        'KFactor', 50, ...
-        'DirectPathDopplerShift', 0, ...
+       'SampleRate', fs, ...
+        'KFactor', 1.45, ...
+        'DirectPathDopplerShift',DirectPathDopplerShift, ...
         'MaximumDopplerShift', 5, ...
         'PathDelays', [0 1.5e-5 3.5e-5], ...
         'AveragePathGains', [0 -2 -10], ...
@@ -87,7 +131,7 @@ Each communication window between the satellite and the ground station, in the c
 
 ### BER - Bit Error Rate
 The Y-axis of the graph represents the bit error rate (BER) on a linear scale. In other words, it represents the percentage of bits received incorrectly in relation to the total number of bits transmitted. For example, if the bit error rate is 0.01, this means that 1% of the transmitted bits were received incorrectly. The scale is linear because it is a direct representation of the bit error rate.
-If the value on the y-axis is 0.5, this means that half of the transmitted bits were received correctly and the other half were received incorrectly. In other words, the bit error rate (BER) is 0.5, which means that there are too many errors in the transmission and the quality of the channel is very poor. The scale used on the y-axis is from 0 to 1, representing the percentage of bits received correctly, i.e., a scale from 0 to 100%. What does this graph mean? It simply shows us in which iterations, or in which overpass, the errors were greater. Investigating why this happened is another step. 
+If the value on the y-axis is 1, this means that all of the transmitted bits were  received incorrectly, (I'm still improving the code and soon I'll post more interesting results for the simulation). The scale used on the y-axis is from 0 to 1, representing the percentage of bits received correctly, i.e., a scale from 0 to 100%. What does this graph mean? It simply shows us in which iterations, or in which overpass, the errors were greater. Investigating why this happened is another step. 
 
 <p align="center">
   <img src="/images/BerxOverpass.png" width="700">
