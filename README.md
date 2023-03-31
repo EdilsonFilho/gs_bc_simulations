@@ -90,7 +90,7 @@ The Y-axis of the graph represents the bit error rate (BER) on a linear scale. I
 If the value on the y-axis is 0.5, this means that half of the transmitted bits were received correctly and the other half were received incorrectly. In other words, the bit error rate (BER) is 0.5, which means that there are too many errors in the transmission and the quality of the channel is very poor. The scale used on the y-axis is from 0 to 1, representing the percentage of bits received correctly, i.e., a scale from 0 to 100%. What does this graph mean? It simply shows us in which iterations, or in which overpass, the errors were greater. Investigating why this happened is another step. 
 
 <p align="center">
-  <img src="/images/BERxOverpass.png" width="700">
+  <img src="/images/BerxOverpass.png" width="700">
 </p>
 
 
